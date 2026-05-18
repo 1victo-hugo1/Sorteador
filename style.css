@@ -1,0 +1,323 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/* ─── Background espacial animado ───────────────────────────────────────────── */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at center, #000000 0%, #0d0d0d 100%);
+    overflow-x: hidden;
+
+}
+
+/* ─── Estrelas fixas ─────────────────────────────────────────────────────────── */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        radial-gradient(1px 1px at 8% 12%, rgba(255, 255, 255, 0.85) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 38%, rgba(255, 255, 255, 0.65) 0%, transparent 100%),
+        radial-gradient(1px 1px at 38% 6%, rgba(255, 255, 255, 0.75) 0%, transparent 100%),
+        radial-gradient(1px 1px at 53% 62%, rgba(255, 255, 255, 0.55) 0%, transparent 100%),
+        radial-gradient(1px 1px at 68% 20%, rgba(255, 255, 255, 0.90) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 78%, rgba(255, 255, 255, 0.70) 0%, transparent 100%),
+        radial-gradient(1px 1px at 91% 10%, rgba(255, 255, 255, 0.80) 0%, transparent 100%),
+        radial-gradient(1px 1px at 14% 82%, rgba(255, 255, 255, 0.60) 0%, transparent 100%),
+        radial-gradient(1px 1px at 58% 92%, rgba(255, 255, 255, 0.50) 0%, transparent 100%),
+        radial-gradient(1px 1px at 33% 50%, rgba(255, 255, 255, 0.70) 0%, transparent 100%),
+        radial-gradient(2px 2px at 4% 48%, rgba(200, 220, 255, 0.80) 0%, transparent 100%),
+        radial-gradient(2px 2px at 28% 72%, rgba(200, 220, 255, 0.60) 0%, transparent 100%),
+        radial-gradient(2px 2px at 74% 52%, rgba(200, 220, 255, 0.70) 0%, transparent 100%),
+        radial-gradient(2px 2px at 89% 90%, rgba(200, 220, 255, 0.50) 0%, transparent 100%),
+        radial-gradient(2px 2px at 46% 28%, rgba(200, 220, 255, 0.80) 0%, transparent 100%),
+        radial-gradient(3px 3px at 18% 8%, rgba(255, 255, 255, 1.00) 0%, transparent 100%),
+        radial-gradient(3px 3px at 63% 4%, rgba(255, 255, 255, 0.90) 0%, transparent 100%),
+        radial-gradient(3px 3px at 86% 58%, rgba(255, 255, 255, 1.00) 0%, transparent 100%),
+        radial-gradient(3px 3px at 41% 76%, rgba(255, 255, 255, 0.90) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+/* ─── Nebulosas animadas (divs separadas para animações independentes) ─────── */
+.nebula {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(90px);
+    opacity: 0.6;
+    border-radius: 50%;
+}
+
+.nebula-1 {
+    width: 80vw;
+    height: 70vh;
+    top: -20vh;
+    left: -20vw;
+    background: radial-gradient(ellipse at center,
+            rgba(88, 28, 160, 0.55) 0%,
+            rgba(50, 10, 100, 0.3) 40%,
+            transparent 70%);
+    animation: drift-1 18s ease-in-out infinite alternate;
+}
+
+.nebula-2 {
+    width: 70vw;
+    height: 80vh;
+    top: 20vh;
+    right: -25vw;
+    background: radial-gradient(ellipse at center,
+            rgba(14, 60, 160, 0.5) 0%,
+            rgba(10, 30, 100, 0.3) 40%,
+            transparent 70%);
+    animation: drift-2 22s ease-in-out infinite alternate;
+}
+
+.nebula-3 {
+    width: 90vw;
+    height: 60vh;
+    bottom: -15vh;
+    left: 10vw;
+    background: radial-gradient(ellipse at center,
+            rgba(6, 110, 130, 0.4) 0%,
+            rgba(5, 60, 80, 0.25) 40%,
+            transparent 70%);
+    animation: drift-3 26s ease-in-out infinite alternate;
+}
+
+.nebula-4 {
+    width: 60vw;
+    height: 60vh;
+    top: 30vh;
+    left: 20vw;
+    background: radial-gradient(ellipse at center,
+            rgba(120, 20, 80, 0.3) 0%,
+            rgba(80, 10, 50, 0.2) 40%,
+            transparent 70%);
+    animation: drift-4 30s ease-in-out infinite alternate;
+}
+
+/* ─── Keyframes de deriva lenta ──────────────────────────────────────────────── */
+@keyframes drift-1 {
+    0% {
+        transform: translate(0px, 0px) scale(1.0);
+        opacity: 0.5;
+    }
+
+    33% {
+        transform: translate(40px, 30px) scale(1.1);
+        opacity: 0.65;
+    }
+
+    66% {
+        transform: translate(-20px, 50px) scale(0.95);
+        opacity: 0.55;
+    }
+
+    100% {
+        transform: translate(60px, -20px) scale(1.05);
+        opacity: 0.6;
+    }
+}
+
+@keyframes drift-2 {
+    0% {
+        transform: translate(0px, 0px) scale(1.0);
+        opacity: 0.5;
+    }
+
+    33% {
+        transform: translate(-50px, 20px) scale(1.05);
+        opacity: 0.6;
+    }
+
+    66% {
+        transform: translate(30px, 60px) scale(1.1);
+        opacity: 0.65;
+    }
+
+    100% {
+        transform: translate(-30px, -40px) scale(0.95);
+        opacity: 0.55;
+    }
+}
+
+@keyframes drift-3 {
+    0% {
+        transform: translate(0px, 0px) scale(1.0);
+        opacity: 0.45;
+    }
+
+    50% {
+        transform: translate(-40px, -30px) scale(1.08);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(50px, 20px) scale(0.97);
+        opacity: 0.5;
+    }
+}
+
+@keyframes drift-4 {
+    0% {
+        transform: translate(0px, 0px) scale(1.0);
+        opacity: 0.35;
+    }
+
+    40% {
+        transform: translate(30px, 40px) scale(1.1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(-40px, -20px) scale(0.95);
+        opacity: 0.4;
+    }
+}
+
+/* ─── Conteúdo acima do fundo ────────────────────────────────────────────────── */
+main,
+header {
+    position: relative;
+    z-index: 1;
+}
+
+
+img {
+    position: relative;
+    z-index: 1;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -30px;
+    display: block;
+}
+
+h1 {
+    background: linear-gradient(90deg, rgb(59, 54, 163) 0%, rgba(9, 9, 121, 1) 44%, rgba(15, 151, 214, 1) 79%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  font-size: 50px;
+    color: transparent;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    margin: -20px 0 20px 0;
+    z-index: 1;
+}
+
+
+input {
+    background: #2a3139;
+    border: 1px solid #e3d7d7;
+    border-radius: 5px;
+    color: #fff;
+    height: 35px;
+    width: 120px;
+    padding-left: 20px;
+    font-weight: 600;
+    font-size: bold 18px;
+    line-height: 47px;
+    opacity: 0.9;
+}
+
+::placeholder {
+    color: #ffffff;
+}
+
+.input-result {
+    background: #2a3139;
+    border: 1px solid #e3d7d7;
+    border-radius: 5px;
+    color: #fff;
+    height: 35px;
+    width: 100px;
+    padding-left: 20px;
+    font-weight: 600;
+    font-size: bold 18px;
+    line-height: 67px;
+    opacity: 0.9;
+    margin-top: 20px;
+}
+
+button {
+    display: block;
+    width: 150px;
+    margin: 20px auto ;
+    padding: 6px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2a3139;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1;
+}
+
+button:hover {
+    background-color: #3a4149;
+}
+button:active {
+    background-color: #1a2129;
+}
+
+
+/* ─── Dados animados ─────────────────────────────────────────────────────────── */
+.dice-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.die {
+    width: 100px;
+    height: 100px;
+    background: #2a3139;
+    border: 1px solid #e3d7d7;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 9px;
+    gap: 4px;
+}
+
+.die.die-rolling {
+    animation: diceRoll 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes diceRoll {
+    0%   { transform: rotate(0deg) scale(1); }
+    15%  { transform: rotate(-22deg) scale(1.15); }
+    35%  { transform: rotate(28deg) scale(0.88); }
+    55%  { transform: rotate(-16deg) scale(1.10); }
+    75%  { transform: rotate(10deg) scale(0.94); }
+    90%  { transform: rotate(-4deg) scale(1.04); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+.pip {
+    border-radius: 50%;
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+.pip-hidden {
+    opacity: 0;
+}
